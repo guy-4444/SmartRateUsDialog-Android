@@ -1,7 +1,7 @@
 # SmartRateUsDialog-Android
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/vlad1m1r990/Lemniscate/blob/master/LICENSE)
 [![](https://jitpack.io/v/guy-4444/SmartRateUsDialog-Android.svg)](https://jitpack.io/#guy-4444/SmartRateUsDialog-Android)
-[![API](https://img.shields.io/badge/API-15%2B-green.svg?style=flat)]()
+[![API](https://img.shields.io/badge/API-18%2B-green.svg?style=flat)]()
 
 Library for android application to implements smart rate dialog
 
