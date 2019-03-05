@@ -21,7 +21,7 @@ Step 2. Add the dependency:
 
 ```
 dependencies {
-	        implementation 'com.github.guy-4444:SmartRateUsDialog-Android:Tag'
+	        implementation 'com.github.guy-4444:SmartRateUsDialog-Android:1.00.01'
 }
 ```
 ## Usage
