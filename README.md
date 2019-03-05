@@ -6,6 +6,7 @@
 Library for android application to implements smart rate dialog
 
 ![device-2018-06-06-144912](https://github.com/guy-4444/SmartRateUsDialog-Android/blob/master/screen%20shot.png?raw=true)
+![device-2018-06-06-144912](https://github.com/guy-4444/SmartRateUsDialog-Android/blob/master/screen%20shot%202.png?raw=true)
 
 ## Setup
 Step 1. Add it in your root build.gradle at the end of repositories:
@@ -21,13 +22,26 @@ Step 2. Add the dependency:
 
 ```
 dependencies {
-	        implementation 'com.github.guy-4444:SmartRateUsDialog-Android:1.00.01'
+	        implementation 'com.github.guy-4444:SmartRateUsDialog-Android:1.00.02'
 }
 ```
 ## Usage
 
 ###### StepProgress Constructor:
 ```java
+
+    // For one time call
+    SmartRate.Rate(MainActivity.this
+            , "Rate Us"
+            , "Tell others what you think about this app"
+            , "Continue"
+            , "Cancel"
+            , "Thanks for the feedback"
+            , Color.parseColor("#2196F3")
+            , 4
+    );
+
+    // For continual calls - 
     SmartRate.Rate(MainActivity.this
                 , "Rate Us" // title - optional
                 , "Tell others what you think about this app" // content - optional
@@ -37,11 +51,12 @@ dependencies {
                 , "Thanks for the feedback" // thanks message to low star users - optional
                 , Color.parseColor("#2196F3") // dialog theme color
                 , 4 // open google play from _ stars  1..5 - optional
-		, 48 // time between calls (unit: Hours) - default is 3 days
+		, 48 // time between calls (unit: Hours) - default is 6 days
+		, 72 // Time to wait until you start asking for the first time (unit: Hours) - default is 3 days
                 );
 ```
 
-![device-2018-06-06-144912](https://github.com/guy-4444/SmartRateUsDialog-Android/blob/master/desc_s.png?raw=true)
+![device-2018-06-06-144912](https://github.com/guy-4444/SmartRateUsDialog-Android/blob/master/desc.png?raw=true)
 
 
 ## License
