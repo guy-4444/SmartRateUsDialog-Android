@@ -44,19 +44,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SmartRate.Rate(MainActivity.this
-                , "Rate Us"
-                , "Tell others what you think about this app"
-                , "Continue"
-                , "Ask me later"
-                , "Never ask again"
-                , "Thanks for the feedback"
-                , Color.parseColor("#2196F3")
-                , 4
+                        , "Rate Us"
+                        , "Tell others what you think about this app"
+                        , "Continue"
+                        , "Ask me later"
+                        , "Never ask again"
+                        , "Thanks for the feedback"
+                        , Color.parseColor("#2196F3")
+                        , 4
+                        , 3
                 );
             }
         });
-
-        //saveLastAskTime(this, 0);
     }
 
 

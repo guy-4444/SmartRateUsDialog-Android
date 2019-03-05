@@ -21,37 +21,16 @@ import android.widget.Toast;
 public class SmartRate {
 
     private static final long DONT_ASK_AGAIN_VALUE = -1;
-    private static final long TIME_BETWEEN_DIALOG_MS = 1000l * 20 * 1;
     private static final String SP_LIBRARY_NAME = "SP_RATE_LIBRARY";
     private static final String SP_KEY_LAST_ASK_TIME = "SP_KEY_LAST_ASK_TIME";
     private static int selectedStar = 1;
+    private static final long DEFAULT_TIME_BETWEEN_DIALOG_MS = 1000l * 60 * 60 * 24 * 3; // 3 days
     private static String DEFAULT_TEXT_TITLE = "Rate Us";
     private static String DEFAULT_TEXT_CONTENT = "Tell others what you think about this app";
     private static String DEFAULT_TEXT_OK = "Continue";
     private static String DEFAULT_TEXT_LATER = "Ask me later";
     private static String DEFAULT_TEXT_STOP = "Never ask again";
     private static String DEFAULT_TEXT_THANKS = "Thanks for the feedback";
-
-    private static String shadeColor(String color, int percent) {
-
-        int R = Integer.parseInt(color.substring(1,3),16);
-        int G = Integer.parseInt(color.substring(3,5),16);
-        int B = Integer.parseInt(color.substring(5,7),16);
-
-        R = R * (100 + percent) / 100;
-        G = G * (100 + percent) / 100;
-        B = B * (100 + percent) / 100;
-
-        R = (R<255)?R:255;
-        G = (G<255)?G:255;
-        B = (B<255)?B:255;
-
-        String RR = (Integer.toString(R, 16).length()==1) ? "0" + Integer.toString(R, 16) : Integer.toString(R, 16);
-        String GG = (Integer.toString(G, 16).length()==1) ? "0" + Integer.toString(G, 16) : Integer.toString(G, 16);
-        String BB = (Integer.toString(B, 16).length()==1) ? "0" + Integer.toString(B, 16) : Integer.toString(B, 16);
-
-        return "#"+RR+GG+BB;
-    }
 
     public static void Rate(
             final Activity activity
@@ -63,6 +42,7 @@ public class SmartRate {
             , final String _thanksForFeedback
             , final int mainColor
             , final int openStoreFromXStars
+            , final int _hoursBetweenCalls
     ) {
 
 
@@ -72,13 +52,14 @@ public class SmartRate {
         final String later_text = (_later_text!=null  &&  !_later_text.equals("")) ? _later_text : DEFAULT_TEXT_LATER;
         final String stop_text = (_stop_text!=null  &&  !_stop_text.equals("")) ? _stop_text : DEFAULT_TEXT_STOP;
         final String thanksForFeedback = (_thanksForFeedback!=null  &&  !_thanksForFeedback.equals("")) ? _thanksForFeedback : DEFAULT_TEXT_THANKS;
+        final long timeBetweenCalls_Ms = (_hoursBetweenCalls >=1  &&  _hoursBetweenCalls < 366*24) ? 1000l * 60 * 60 *_hoursBetweenCalls : DEFAULT_TIME_BETWEEN_DIALOG_MS;
 
         if (getLastAskTime(activity) == DONT_ASK_AGAIN_VALUE) {
             // user already rate or click on never ask button
             return;
         }
-
-        if (System.currentTimeMillis() < getLastAskTime(activity) + TIME_BETWEEN_DIALOG_MS) {
+        if (System.currentTimeMillis() < getLastAskTime(activity) + timeBetweenCalls_Ms) {
+            // There was not enough time between the calls.
             return;
         }
 
@@ -233,5 +214,26 @@ public class SmartRate {
         SharedPreferences.Editor editor = activity.getSharedPreferences(SP_LIBRARY_NAME, Context.MODE_PRIVATE).edit();
         editor.putLong(SP_KEY_LAST_ASK_TIME, time);
         editor.apply();
+    }
+
+    private static String shadeColor(String color, int percent) {
+
+        int R = Integer.parseInt(color.substring(1,3),16);
+        int G = Integer.parseInt(color.substring(3,5),16);
+        int B = Integer.parseInt(color.substring(5,7),16);
+
+        R = R * (100 + percent) / 100;
+        G = G * (100 + percent) / 100;
+        B = B * (100 + percent) / 100;
+
+        R = (R<255)?R:255;
+        G = (G<255)?G:255;
+        B = (B<255)?B:255;
+
+        String RR = (Integer.toString(R, 16).length()==1) ? "0" + Integer.toString(R, 16) : Integer.toString(R, 16);
+        String GG = (Integer.toString(G, 16).length()==1) ? "0" + Integer.toString(G, 16) : Integer.toString(G, 16);
+        String BB = (Integer.toString(B, 16).length()==1) ? "0" + Integer.toString(B, 16) : Integer.toString(B, 16);
+
+        return "#"+RR+GG+BB;
     }
 }
