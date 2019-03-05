@@ -43,16 +43,27 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                SmartRate.Rate(MainActivity.this
+//                        , "Rate Us"
+//                        , "Tell others what you think about this app"
+//                        , "Continue"
+//                        , "Ask me later"
+//                        , "Never ask again"
+//                        , "Thanks for the feedback"
+//                        , Color.parseColor("#2196F3")
+//                        , 4
+//                        , 48
+//                        , 72
+//                );
+
                 SmartRate.Rate(MainActivity.this
                         , "Rate Us"
                         , "Tell others what you think about this app"
                         , "Continue"
-                        , "Ask me later"
-                        , "Never ask again"
+                        , "Cancel"
                         , "Thanks for the feedback"
                         , Color.parseColor("#2196F3")
                         , 4
-                        , 3
                 );
             }
         });
