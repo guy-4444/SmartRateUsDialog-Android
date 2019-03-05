@@ -5,7 +5,7 @@
 
 Library for android application to implements smart rate dialog
 
-![device-2018-06-06-144912](https://github.com/guy-4444/StepProgress-Android/blob/master/device-2019-02-04-144302.png?raw=true)
+![device-2018-06-06-144912](https://github.com/guy-4444/SmartRateUsDialog-Android/blob/master/screen%20shot.png?raw=true)
 
 ## Setup
 Step 1. Add it in your root build.gradle at the end of repositories:
