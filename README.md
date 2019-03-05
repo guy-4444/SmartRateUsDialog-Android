@@ -37,6 +37,7 @@ dependencies {
                 , "Thanks for the feedback" // thanks message to low star users - optional
                 , Color.parseColor("#2196F3") // dialog theme color
                 , 4 // open google play from _ stars  1..5 - optional
+		, 48 // time between calls (unit: Hours) - default is 3 days
                 );
 ```
 ## License
