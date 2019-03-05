@@ -40,6 +40,10 @@ dependencies {
 		, 48 // time between calls (unit: Hours) - default is 3 days
                 );
 ```
+
+![device-2018-06-06-144912](https://github.com/guy-4444/SmartRateUsDialog-Android/blob/master/desc_s.png?raw=true)
+
+
 ## License
 
     Copyright 2019 Guy Isakov
