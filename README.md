@@ -3,7 +3,9 @@
 [![](https://jitpack.io/v/guy-4444/SmartRateUsDialog-Android.svg)](https://jitpack.io/#guy-4444/SmartRateUsDialog-Android)
 [![API](https://img.shields.io/badge/API-18%2B-green.svg?style=flat)]()
 
-Library for android application to implements smart rate dialog
+A library for simple implementation of smart ranking.
+The user will see a dialog every x time.
+If the user gives a high score, he will be transferred to the Google store. If he gives a low score, he will only receive a thank you toast message.
 
 ![device-2018-06-06-144912](https://github.com/guy-4444/SmartRateUsDialog-Android/blob/master/screen%20shot.png?raw=true)
 ![device-2018-06-06-144912](https://github.com/guy-4444/SmartRateUsDialog-Android/blob/master/screen%20shot%202.png?raw=true)
@@ -35,7 +37,7 @@ dependencies {
             , "Rate Us"
             , "Tell others what you think about this app"
             , "Continue"
-            , "Cancel"
+            , "Close"
             , "Thanks for the feedback"
             , Color.parseColor("#2196F3")
             , 4
