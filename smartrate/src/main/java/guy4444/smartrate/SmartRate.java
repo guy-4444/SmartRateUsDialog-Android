@@ -10,6 +10,10 @@ import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.AppCompatButton;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -29,16 +33,22 @@ public class SmartRate {
     private static final long DEFAULT_DELAY_TO_ACTIVATE_MS = 1000l * 60 * 60 * 24 * 3; // 3 days
     private static String DEFAULT_TEXT_TITLE = "Rate Us";
     private static String DEFAULT_TEXT_CONTENT = "Tell others what you think about this app";
-    private static String DEFAULT_TEXT_OK = "Continue";
+    private static String DEFAULT_TEXT_CONTINUE = "Continue";
+    private static String DEFAULT_TEXT_GOOGLE_PLAY = "Please take a moment and rate us on Google Play";
+    private static String DEFAULT_TEXT_CLICK_HERE = "click here";
     private static String DEFAULT_TEXT_LATER = "Ask me later";
     private static String DEFAULT_TEXT_STOP = "Never ask again";
     private static String DEFAULT_TEXT_THANKS = "Thanks for the feedback";
+
+    private static boolean continueClicked = false;
 
     public static void Rate(
             final Activity activity
             , final String _title
             , final String _content
-            , final String _ok_text
+            , final String _continue_text
+            , final String _googlePlay_text
+            , final String _clickHere_text
             , final String _cancel_text
             , final String _thanksForFeedback
             , final int mainColor
@@ -47,7 +57,9 @@ public class SmartRate {
         Rate(activity
                 , _title
                 , _content
-                , _ok_text
+                , _continue_text
+                , _googlePlay_text
+                , _clickHere_text
                 , _cancel_text
                 , ""
                 , _thanksForFeedback
@@ -61,7 +73,9 @@ public class SmartRate {
             final Activity activity
             , final String _title
             , final String _content
-            , final String _ok_text
+            , final String _continue_text
+            , final String _googlePlay_text
+            , final String _clickHere_text
             , final String _later_text
             , final String _stop_text
             , final String _thanksForFeedback
@@ -73,7 +87,9 @@ public class SmartRate {
 
         final String title = (_title != null && !_title.equals("")) ? _title : DEFAULT_TEXT_TITLE;
         final String content = (_content != null && !_content.equals("")) ? _content : DEFAULT_TEXT_CONTENT;
-        final String ok_text = (_ok_text != null && !_ok_text.equals("")) ? _ok_text : DEFAULT_TEXT_OK;
+        final String continue_text = (_continue_text != null && !_continue_text.equals("")) ? _continue_text : DEFAULT_TEXT_CONTINUE;
+        final String googlePlay_text = (_googlePlay_text != null && !_googlePlay_text.equals("")) ? _googlePlay_text : DEFAULT_TEXT_GOOGLE_PLAY;
+        final String clickHere_text = (_clickHere_text != null && !_clickHere_text.equals("")) ? _clickHere_text : DEFAULT_TEXT_CLICK_HERE;
         final String later_text = (_later_text != null && !_later_text.equals("")) ? _later_text : DEFAULT_TEXT_LATER;
         final String stop_text = (_stop_text != null && !_stop_text.equals("")) ? _stop_text : DEFAULT_TEXT_STOP;
         final String thanksForFeedback = (_thanksForFeedback != null && !_thanksForFeedback.equals("")) ? _thanksForFeedback : DEFAULT_TEXT_THANKS;
@@ -158,7 +174,7 @@ public class SmartRate {
                 }
 
                 alert_BTN_ok.setEnabled(true);
-                alert_BTN_ok.setText((clickedIndex + 1) + "/5\n" + ok_text);
+                alert_BTN_ok.setText((clickedIndex + 1) + "/5\n" + continue_text);
                 selectedStar = clickedIndex + 1;
             }
         };
@@ -174,24 +190,35 @@ public class SmartRate {
         alert_LBL_content.setText(content);
 
 
-        if (ok_text != null && !ok_text.equals("")) {
-            alert_BTN_ok.setText(ok_text);
-            alert_BTN_ok.setText("?/5\n" + ok_text);
+        if (continue_text != null && !continue_text.equals("")) {
+            alert_BTN_ok.setText(continue_text);
+            alert_BTN_ok.setText("?/5\n" + continue_text);
             alert_BTN_ok.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    setLastAskTime(activity, DONT_ASK_AGAIN_VALUE);
 
-                    int _openStoreFrom_Stars = openStoreFromXStars;
-                    if (openStoreFromXStars < 1 || openStoreFromXStars > 5) {
-                        _openStoreFrom_Stars = 1;
-                    }
-                    if (selectedStar >= _openStoreFrom_Stars) {
-                        launchMarket(activity);
+                    if (continueClicked) {
+                        setLastAskTime(activity, DONT_ASK_AGAIN_VALUE);
+
+                        int _openStoreFrom_Stars = openStoreFromXStars;
+                        if (openStoreFromXStars < 1 || openStoreFromXStars > 5) {
+                            _openStoreFrom_Stars = 1;
+                        }
+                        if (selectedStar >= _openStoreFrom_Stars) {
+                            launchMarket(activity);
+                        } else {
+                            Toast.makeText(activity, thanksForFeedback, Toast.LENGTH_SHORT).show();
+                        }
+                        alertDialog.dismiss();
                     } else {
-                        Toast.makeText(activity, thanksForFeedback, Toast.LENGTH_SHORT).show();
+                        continueClicked = true;
+
+                        final SpannableString text = SpannableString.valueOf(googlePlay_text + "\n(" + clickHere_text + ")");
+                        text.setSpan(new RelativeSizeSpan(0.8f), 0, googlePlay_text.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        text.setSpan(new RelativeSizeSpan(0.6f), googlePlay_text.length(), text.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        alert_BTN_ok.setText(text);
                     }
-                    alertDialog.dismiss();
+
                 }
             });
         } else {

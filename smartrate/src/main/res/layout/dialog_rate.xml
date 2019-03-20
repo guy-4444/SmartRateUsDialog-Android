@@ -124,8 +124,6 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="12dp"
                 android:clickable="true"
-                android:lines="2"
-                android:maxLines="2"
                 android:minLines="2"
                 android:paddingLeft="36dp"
                 android:paddingTop="16dp"

@@ -47,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
 //                        , "Rate Us"
 //                        , "Tell others what you think about this app"
 //                        , "Continue"
+//                        , "Please take a moment and rate us on Google Play"
+//                        , "click here"
 //                        , "Ask me later"
 //                        , "Never ask again"
 //                        , "Thanks for the feedback"
@@ -60,11 +62,25 @@ public class MainActivity extends AppCompatActivity {
                         , "Rate Us"
                         , "Tell others what you think about this app"
                         , "Continue"
+                        , "Please take a moment and rate us on Google Play"
+                        , "click here"
                         , "Cancel"
                         , "Thanks for the feedback"
                         , Color.parseColor("#2196F3")
                         , 4
                 );
+
+//                SmartRate.Rate(MainActivity.this
+//                        , "דרג אותנו"
+//                        , "שתף עם אחרים מה אתה חושב עלינו"
+//                        , "המשך"
+//                        , "בבקשה דרג אותנו גם בחנות גוגל"
+//                        , "לחץ כאו"
+//                        , "ביטול"
+//                        , "תודה על הדירוג"
+//                        , Color.parseColor("#E44643")
+//                        , 4
+//                );
             }
         });
     }
