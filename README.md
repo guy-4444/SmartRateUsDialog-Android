@@ -34,28 +34,32 @@ dependencies {
 
     // For one time call
     SmartRate.Rate(MainActivity.this
-            , "Rate Us"
-            , "Tell others what you think about this app"
-            , "Continue"
-            , "Close"
-            , "Thanks for the feedback"
-            , Color.parseColor("#2196F3")
-            , 4
+    	, "Rate Us"
+    	, "Tell others what you think about this app"
+    	, "Continue"
+    	, "Please take a moment and rate us on Google Play"
+    	, "click here"
+    	, "Cancel"
+    	, "Thanks for the feedback"
+    	, Color.parseColor("#2196F3")
+   	, 4
     );
 
     // For continual calls - 
     SmartRate.Rate(MainActivity.this
-                , "Rate Us" // title - optional
-                , "Tell others what you think about this app" // content - optional
-                , "Continue" // OK button text - optional
-                , "Ask me later" // later button text - optional
-                , "Never ask again" // stop asking button text - optional
-                , "Thanks for the feedback" // thanks message to low star users - optional
-                , Color.parseColor("#2196F3") // dialog theme color
-                , 4 // open google play from _ stars  1..5 - optional
-		, 48 // time between calls (unit: Hours) - default is 6 days
-		, 72 // Time to wait until you start asking for the first time (unit: Hours) - default is 3 days
-                );
+    	, "Rate Us"
+    	, "Tell others what you think about this app"
+    	, "Continue"
+    	, "Please take a moment and rate us on Google Play"
+    	, "click here"
+    	, "Ask me later"
+    	, "Never ask again"
+    	, "Thanks for the feedback"
+    	, Color.parseColor("#2196F3")
+    	, 4
+    	, 48
+    	, 72
+    );
 ```
 
 ![device-2018-06-06-144912](https://github.com/guy-4444/SmartRateUsDialog-Android/blob/master/desc.png?raw=true)
