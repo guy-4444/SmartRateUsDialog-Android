@@ -96,6 +96,7 @@ public class SmartRate {
         final long timeBetweenCalls_Ms = (_hoursBetweenCalls >= 1 && _hoursBetweenCalls < 366 * 24) ? 1000l * 60 * 60 * _hoursBetweenCalls : DEFAULT_TIME_BETWEEN_DIALOG_MS;
         final long timeDelayToActivate_Ms = (_hoursDelayToActivate >= 1 && _hoursDelayToActivate < 366 * 24) ? 1000l * 60 * 60 * _hoursDelayToActivate : DEFAULT_DELAY_TO_ACTIVATE_MS;
 
+        continueClicked = false;
 
         if (_hoursBetweenCalls != -1  &&  _hoursDelayToActivate != -1) {
             // no force asking mode
@@ -197,13 +198,15 @@ public class SmartRate {
                 @Override
                 public void onClick(View view) {
 
+                    int _openStoreFrom_Stars = openStoreFromXStars;
+                    if (openStoreFromXStars < 1 || openStoreFromXStars > 5) {
+                        _openStoreFrom_Stars = 4;
+                    }
+
                     if (continueClicked) {
                         setLastAskTime(activity, DONT_ASK_AGAIN_VALUE);
 
-                        int _openStoreFrom_Stars = openStoreFromXStars;
-                        if (openStoreFromXStars < 1 || openStoreFromXStars > 5) {
-                            _openStoreFrom_Stars = 1;
-                        }
+
                         if (selectedStar >= _openStoreFrom_Stars) {
                             launchMarket(activity);
                         } else {
@@ -211,12 +214,17 @@ public class SmartRate {
                         }
                         alertDialog.dismiss();
                     } else {
-                        continueClicked = true;
-
-                        final SpannableString text = SpannableString.valueOf(googlePlay_text + "\n(" + clickHere_text + ")");
-                        text.setSpan(new RelativeSizeSpan(0.8f), 0, googlePlay_text.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                        text.setSpan(new RelativeSizeSpan(0.6f), googlePlay_text.length(), text.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                        alert_BTN_ok.setText(text);
+                        if (selectedStar >= _openStoreFrom_Stars) {
+                            continueClicked = true;
+                            String text = googlePlay_text + "\n(" + clickHere_text + ")";
+                            Spannable span = new SpannableString(text);
+                            span.setSpan(new RelativeSizeSpan(0.7f), 0, googlePlay_text.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                            span.setSpan(new RelativeSizeSpan(0.4f), googlePlay_text.length(), text.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                            alert_BTN_ok.setText(span);
+                        } else {
+                            alertDialog.dismiss();
+                            Toast.makeText(activity, thanksForFeedback, Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                 }
