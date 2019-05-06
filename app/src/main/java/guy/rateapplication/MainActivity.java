@@ -70,6 +70,25 @@ public class MainActivity extends AppCompatActivity {
                         , 4
                 );
 
+                SmartRate.Rate(MainActivity.this
+                        , "Rate Us"
+                        , "Tell others what you think about this app"
+                        , "Continue"
+                        , "Please take a moment and rate us on Google Play"
+                        , "click here"
+                        , "Cancel"
+                        , "Thanks for the feedback"
+                        , Color.parseColor("#2196F3")
+                        , 4
+                        , new SmartRate.CallBack_UserRating() {
+                            @Override
+                            public void userRating(int rating) {
+                                // Do something
+                                // from now disable this option
+                            }
+                        }
+                );
+
 //                SmartRate.Rate(MainActivity.this
 //                        , "דרג אותנו"
 //                        , "שתף עם אחרים מה אתה חושב עלינו"

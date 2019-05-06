@@ -24,6 +24,10 @@ import android.widget.Toast;
 
 public class SmartRate {
 
+    public interface CallBack_UserRating {
+        void userRating(int rating);
+    }
+
     private static final long DONT_ASK_AGAIN_VALUE = -1;
     private static final String SP_LIBRARY_NAME = "SP_RATE_LIBRARY";
     private static final String SP_KEY_LAST_ASK_TIME = "SP_KEY_LAST_ASK_TIME";
@@ -76,6 +80,35 @@ public class SmartRate {
             , final String _continue_text
             , final String _googlePlay_text
             , final String _clickHere_text
+            , final String _cancel_text
+            , final String _thanksForFeedback
+            , final int mainColor
+            , final int openStoreFromXStars
+            , CallBack_UserRating callBack_userRating
+    ) {
+        Rate(activity
+                , _title
+                , _content
+                , _continue_text
+                , _googlePlay_text
+                , _clickHere_text
+                , _cancel_text
+                , ""
+                , _thanksForFeedback
+                , mainColor
+                , openStoreFromXStars
+                , -1
+                , -1
+                , callBack_userRating);
+    }
+
+    public static void Rate(
+            final Activity activity
+            , final String _title
+            , final String _content
+            , final String _continue_text
+            , final String _googlePlay_text
+            , final String _clickHere_text
             , final String _later_text
             , final String _stop_text
             , final String _thanksForFeedback
@@ -83,6 +116,38 @@ public class SmartRate {
             , final int openStoreFromXStars
             , final int _hoursBetweenCalls
             , final int _hoursDelayToActivate
+    ) {
+        Rate(activity
+                , _title
+                , _content
+                , _continue_text
+                , _googlePlay_text
+                , _clickHere_text
+                , _later_text
+                , _stop_text
+                , _thanksForFeedback
+                , mainColor
+                , openStoreFromXStars
+                , -1
+                , -1
+                , null);
+    }
+
+    public static void Rate(
+            final Activity activity
+            , final String _title
+            , final String _content
+            , final String _continue_text
+            , final String _googlePlay_text
+            , final String _clickHere_text
+            , final String _later_text
+            , final String _stop_text
+            , final String _thanksForFeedback
+            , final int mainColor
+            , final int openStoreFromXStars
+            , final int _hoursBetweenCalls
+            , final int _hoursDelayToActivate
+            , final CallBack_UserRating callBack_userRating
     ) {
 
         final String title = (_title != null && !_title.equals("")) ? _title : DEFAULT_TEXT_TITLE;
@@ -225,6 +290,10 @@ public class SmartRate {
                             alertDialog.dismiss();
                             Toast.makeText(activity, thanksForFeedback, Toast.LENGTH_SHORT).show();
                         }
+                    }
+
+                    if (callBack_userRating != null) {
+                        callBack_userRating.userRating(selectedStar);
                     }
 
                 }
