@@ -24,7 +24,7 @@ Step 2. Add the dependency:
 
 ```
 dependencies {
-	        implementation 'com.github.guy-4444:SmartRateUsDialog-Android:1.00.05'
+	        implementation 'com.github.guy-4444:SmartRateUsDialog-Android:1.00.06'
 }
 ```
 ## Usage
@@ -60,6 +60,27 @@ dependencies {
     	, 48
     	, 72
     );
+    
+    // With Call Back:
+    SmartRate.Rate(MainActivity.this
+            , "Rate Us"
+            , "Tell others what you think about this app"
+            , "Continue"
+            , "Please take a moment and rate us on Google Play"
+            , "click here"
+            , "Cancel"
+            , "Thanks for the feedback"
+            , Color.parseColor("#2196F3")
+            , 4
+            , new SmartRate.CallBack_UserRating() {
+                @Override
+                    public void userRating(int rating) {
+                        // Do something
+                        // from now disable this option
+                    }
+              }
+    );
+
 ```
 
 ![device-2018-06-06-144912](https://github.com/guy-4444/SmartRateUsDialog-Android/blob/master/desc.png?raw=true)
