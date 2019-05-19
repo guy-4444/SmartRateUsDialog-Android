@@ -24,7 +24,7 @@ Step 2. Add the dependency:
 
 ```
 dependencies {
-	        implementation 'com.github.guy-4444:SmartRateUsDialog-Android:1.00.06'
+	        implementation 'com.github.guy-4444:SmartRateUsDialog-Android:1.00.07'
 }
 ```
 ## Usage
