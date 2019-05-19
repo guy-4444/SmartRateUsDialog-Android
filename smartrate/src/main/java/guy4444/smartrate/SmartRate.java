@@ -128,8 +128,8 @@ public class SmartRate {
                 , _thanksForFeedback
                 , mainColor
                 , openStoreFromXStars
-                , -1
-                , -1
+                , _hoursBetweenCalls
+                , _hoursDelayToActivate
                 , null);
     }
 
@@ -162,6 +162,7 @@ public class SmartRate {
         final long timeDelayToActivate_Ms = (_hoursDelayToActivate >= 1 && _hoursDelayToActivate < 366 * 24) ? 1000l * 60 * 60 * _hoursDelayToActivate : DEFAULT_DELAY_TO_ACTIVATE_MS;
 
         continueClicked = false;
+        boolean hideAskMeLater = false;
 
         if (_hoursBetweenCalls != -1  &&  _hoursDelayToActivate != -1) {
             // no force asking mode
@@ -172,6 +173,11 @@ public class SmartRate {
             }
             if (System.currentTimeMillis() < initTime + timeDelayToActivate_Ms) {
                 return;
+            }
+
+            if (getLastAskTime(activity) == 0) {
+                // first time asked
+                hideAskMeLater = true;
             }
 
             if (getLastAskTime(activity) == DONT_ASK_AGAIN_VALUE) {
@@ -191,8 +197,8 @@ public class SmartRate {
         View dialogView = inflater.inflate(R.layout.dialog_rate, null);
         dialogBuilder.setView(dialogView);
         final AlertDialog alertDialog = dialogBuilder.create();
-        alertDialog.setCancelable(true);
-        alertDialog.setCanceledOnTouchOutside(true);
+        alertDialog.setCancelable(false);
+        alertDialog.setCanceledOnTouchOutside(false);
 
         final RelativeLayout alert_LAY_back = (RelativeLayout) dialogView.findViewById(R.id.alert_LAY_back);
         final AppCompatButton alert_BTN_ok = (AppCompatButton) dialogView.findViewById(R.id.alert_BTN_ok);
@@ -302,6 +308,10 @@ public class SmartRate {
             alert_BTN_ok.setVisibility(View.INVISIBLE);
         }
         alert_BTN_ok.setEnabled(false);
+
+        if (hideAskMeLater) {
+            alert_BTN_stop.setVisibility(View.GONE);
+        }
 
         if (later_text != null && !later_text.equals("")) {
             alert_BTN_later.setText(later_text);
