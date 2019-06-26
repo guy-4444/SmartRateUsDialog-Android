@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // first call after 3 days, the dialog will appear every 2 days until the user rates the app / or clicks on NEVER ASK AGAIN button
+                // The panel will appear every two days until the user upgrades the app / or clicks on Do not ask me anymore
                 SmartRate.Rate(MainActivity.this
                         , "Rate Us"
                         , "Tell others what you think about this app"
@@ -51,11 +53,12 @@ public class MainActivity extends AppCompatActivity {
                         , "click here"
                         , "Ask me later"
                         , "Never ask again"
+                        , "Cancel"
                         , "Thanks for the feedback"
                         , Color.parseColor("#2196F3")
                         , 4
-                        , 1
-                        , 24
+                        , 48
+                        , 72
                 );
 
 //                SmartRate.Rate(MainActivity.this
@@ -69,8 +72,8 @@ public class MainActivity extends AppCompatActivity {
 //                        , Color.parseColor("#2196F3")
 //                        , 4
 //                );
-//
-//                SmartRate.Rate(MainActivity.this
+
+//                  SmartRate.Rate(MainActivity.this
 //                        , "Rate Us"
 //                        , "Tell others what you think about this app"
 //                        , "Continue"

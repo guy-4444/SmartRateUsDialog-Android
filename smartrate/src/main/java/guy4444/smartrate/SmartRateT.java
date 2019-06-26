@@ -10,10 +10,6 @@ import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.AppCompatButton;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.RelativeSizeSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -23,7 +19,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class SmartRate {
+public class SmartRateT {
 
     public interface CallBack_UserRating {
         void userRating(int rating);
@@ -55,6 +51,7 @@ public class SmartRate {
             , final String _continue_text
             , final String _googlePlay_text
             , final String _clickHere_text
+            , final String _later_text
             , final String _cancel_text
             , final String _thanksForFeedback
             , final int mainColor
@@ -66,7 +63,7 @@ public class SmartRate {
                 , _continue_text
                 , _googlePlay_text
                 , _clickHere_text
-                , ""
+                , _later_text
                 , ""
                 , _cancel_text
                 , _thanksForFeedback
@@ -83,6 +80,7 @@ public class SmartRate {
             , final String _continue_text
             , final String _googlePlay_text
             , final String _clickHere_text
+            , final String _later_text
             , final String _cancel_text
             , final String _thanksForFeedback
             , final int mainColor
@@ -95,7 +93,7 @@ public class SmartRate {
                 , _continue_text
                 , _googlePlay_text
                 , _clickHere_text
-                , ""
+                , _later_text
                 , ""
                 , _cancel_text
                 , _thanksForFeedback
@@ -166,13 +164,13 @@ public class SmartRate {
         final String stop_text = (_stop_text != null && !_stop_text.equals("")) ? _stop_text : DEFAULT_TEXT_STOP;
         final String cancel_text = (_cancel_text != null && !_cancel_text.equals("")) ? _cancel_text : DEFAULT_TEXT_CANCEL;
         final String thanksForFeedback = (_thanksForFeedback != null && !_thanksForFeedback.equals("")) ? _thanksForFeedback : DEFAULT_TEXT_THANKS;
-        final long timeBetweenCalls_Ms = (_hoursBetweenCalls >= 1 && _hoursBetweenCalls < 366 * 24) ? 1000l * 60 * 60 * _hoursBetweenCalls : DEFAULT_TIME_BETWEEN_DIALOG_MS;
-        final long timeDelayToActivate_Ms = (_hoursDelayToActivate >= 0 && _hoursDelayToActivate < 366 * 24) ? 1000l * 60 * 60 * _hoursDelayToActivate : DEFAULT_DELAY_TO_ACTIVATE_MS;
-//        final long timeBetweenCalls_Ms = 0;
-//        final long timeDelayToActivate_Ms = 0;
+        //final long timeBetweenCalls_Ms = (_hoursBetweenCalls >= 1 && _hoursBetweenCalls < 366 * 24) ? 1000l * 60 * 60 * _hoursBetweenCalls : DEFAULT_TIME_BETWEEN_DIALOG_MS;
+        //final long timeDelayToActivate_Ms = (_hoursDelayToActivate >= 1 && _hoursDelayToActivate < 366 * 24) ? 1000l * 60 * 60 * _hoursDelayToActivate : DEFAULT_DELAY_TO_ACTIVATE_MS;
+        final long timeBetweenCalls_Ms = 0;
+        final long timeDelayToActivate_Ms = 0;
 
         continueClicked = false;
-        boolean hideNeverAskAgain = false;
+        boolean hideAskMeLater = false;
 
         if (_hoursBetweenCalls != -1  &&  _hoursDelayToActivate != -1) {
             // no force asking mode
@@ -187,7 +185,7 @@ public class SmartRate {
 
             if (getLastAskTime(activity) == 0) {
                 // first time asked
-                hideNeverAskAgain = true;
+                hideAskMeLater = true;
             }
 
             if (getLastAskTime(activity) == DONT_ASK_AGAIN_VALUE) {
@@ -335,7 +333,7 @@ public class SmartRate {
         }
         alert_BTN_ok.setEnabled(false);
 
-        if (hideNeverAskAgain) {
+        if (hideAskMeLater) {
             alert_BTN_stop.setVisibility(View.GONE);
         }
 
@@ -368,7 +366,6 @@ public class SmartRate {
 
         if (_hoursBetweenCalls == -1  &&  _hoursDelayToActivate == -1) {
             // force asking mode
-            alert_BTN_later.setText(cancel_text);
             alert_BTN_stop.setVisibility(View.GONE);
         }
 

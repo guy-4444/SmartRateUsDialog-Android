@@ -6,10 +6,23 @@
     android:layout_height="wrap_content"
     android:background="@color/colorPrimary">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_5_stars"
+            android:scaleType="fitCenter"/>
+
+    </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
         android:layout_marginBottom="0dp"
@@ -26,7 +39,7 @@
             android:gravity="center_horizontal"
             android:text="Title"
             android:textColor="@color/colorPrimary"
-            android:textSize="28sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
@@ -36,15 +49,15 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="4dp"
             android:layout_marginRight="16dp"
-            android:layout_marginBottom="4dp"
             android:gravity="center_horizontal"
             android:text="Content"
             android:textColor="@color/colorPrimary"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:background="@drawable/border"
@@ -52,10 +65,32 @@
             android:orientation="vertical"
             android:padding="4dp">
 
+            <TextView
+                android:id="@+id/alert_LBL_google"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="4dp"
+                android:gravity="center_horizontal"
+                android:text="Content"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp" />
+
+
+            <ImageView
+                android:id="@+id/alert_IMG_google"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_google_play"
+                android:scaleType="fitCenter"/>
+
             <LinearLayout
                 android:id="@+id/alert_LAY_stars"
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:orientation="horizontal">
@@ -127,43 +162,57 @@
                 android:clickable="true"
                 android:minLines="2"
                 android:paddingLeft="36dp"
-                android:paddingTop="16dp"
+                android:paddingTop="6dp"
                 android:paddingRight="36dp"
-                android:paddingBottom="16dp"
+                android:paddingBottom="6dp"
                 android:text="OK BTN"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/alert_BTN_later"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="6dp"
-            android:alpha="0.5"
-            android:background="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:text="LATER BTN"
-            android:textColor="@color/colorPrimary"
-            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/alert_BTN_stop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="2dp"
-            android:alpha="0.5"
-            android:background="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:text="STOP BTN"
-            android:textColor="@color/colorPrimary" />
+            <Button
+                android:id="@+id/alert_BTN_stop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="2dp"
+                android:alpha="0.5"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="STOP BTN"
+                android:textSize="12sp"
+                android:textColor="@color/colorPrimary" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/alert_BTN_later"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="4dp"
+                android:alpha="0.5"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="LATER BTN"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
