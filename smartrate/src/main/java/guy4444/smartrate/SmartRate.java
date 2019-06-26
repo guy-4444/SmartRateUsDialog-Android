@@ -166,7 +166,7 @@ public class SmartRate {
         final String stop_text = (_stop_text != null && !_stop_text.equals("")) ? _stop_text : DEFAULT_TEXT_STOP;
         final String cancel_text = (_cancel_text != null && !_cancel_text.equals("")) ? _cancel_text : DEFAULT_TEXT_CANCEL;
         final String thanksForFeedback = (_thanksForFeedback != null && !_thanksForFeedback.equals("")) ? _thanksForFeedback : DEFAULT_TEXT_THANKS;
-        final long timeBetweenCalls_Ms = (_hoursBetweenCalls >= 1 && _hoursBetweenCalls < 366 * 24) ? 1000l * 60 * 60 * _hoursBetweenCalls : DEFAULT_TIME_BETWEEN_DIALOG_MS;
+        final long timeBetweenCalls_Ms = (_hoursBetweenCalls >= 0 && _hoursBetweenCalls < 366 * 24) ? 1000l * 60 * 60 * _hoursBetweenCalls : DEFAULT_TIME_BETWEEN_DIALOG_MS;
         final long timeDelayToActivate_Ms = (_hoursDelayToActivate >= 0 && _hoursDelayToActivate < 366 * 24) ? 1000l * 60 * 60 * _hoursDelayToActivate : DEFAULT_DELAY_TO_ACTIVATE_MS;
 //        final long timeBetweenCalls_Ms = 0;
 //        final long timeDelayToActivate_Ms = 0;
@@ -178,8 +178,8 @@ public class SmartRate {
             // no force asking mode
             long initTime = getInitTime(activity);
             if (initTime == 0) {
-                setInitTime(activity, System.currentTimeMillis());
-                return;
+                initTime = System.currentTimeMillis();
+                setInitTime(activity, initTime);
             }
             if (System.currentTimeMillis() < initTime + timeDelayToActivate_Ms) {
                 return;
