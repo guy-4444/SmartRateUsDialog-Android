@@ -50,6 +50,25 @@ public class SmartRate {
 
     public static void Rate(
             final Activity activity
+            , final int mainColor
+            , final int openStoreFromXStars
+            , final CallBack_UserRating callBack_userRating
+    ) {
+        Rate(activity
+                , ""
+                , ""
+                , ""
+                , ""
+                , ""
+                , ""
+                , ""
+                , mainColor
+                , openStoreFromXStars
+                , callBack_userRating);
+    }
+
+    public static void Rate(
+            final Activity activity
             , final String _title
             , final String _content
             , final String _continue_text
@@ -174,7 +193,7 @@ public class SmartRate {
         continueClicked = false;
         boolean hideNeverAskAgain = false;
 
-        if (_hoursBetweenCalls != -1  &&  _hoursDelayToActivate != -1) {
+        if (_hoursBetweenCalls != -1 && _hoursDelayToActivate != -1) {
             // no force asking mode
             long initTime = getInitTime(activity);
             if (initTime == 0) {
@@ -300,7 +319,7 @@ public class SmartRate {
                         }
                         alertDialog.dismiss();
                     } else {
-                        if (selectedStar >= _openStoreFrom_Stars) {
+                        if (openStoreFromXStars != -1 && selectedStar >= _openStoreFrom_Stars) {
                             continueClicked = true;
 
                             alert_LBL_title.setVisibility(View.GONE);
@@ -366,7 +385,7 @@ public class SmartRate {
         }
 
 
-        if (_hoursBetweenCalls == -1  &&  _hoursDelayToActivate == -1) {
+        if (_hoursBetweenCalls == -1 && _hoursDelayToActivate == -1) {
             // force asking mode
             alert_BTN_later.setText(cancel_text);
             alert_BTN_stop.setVisibility(View.GONE);

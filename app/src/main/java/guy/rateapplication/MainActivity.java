@@ -61,16 +61,28 @@ public class MainActivity extends AppCompatActivity {
 //                );
 
                 SmartRate.Rate(MainActivity.this
-                        , "Rate Us"
-                        , "Tell others what you think about this app"
-                        , "Continue"
-                        , "Please take a moment and rate us on Google Play"
-                        , "click here"
-                        , "Cancel"
-                        , "Thanks for the feedback"
                         , Color.parseColor("#E44643")
-                        , 4
+                        , -1
+                        , new SmartRate.CallBack_UserRating() {
+                            @Override
+                            public void userRating(int rating) {
+                                Toast.makeText(MainActivity.this, "Rating: " + rating + " Stars", Toast.LENGTH_LONG).show();
+                                //saveUserRating(rating);
+                            }
+                        }
                 );
+
+//                SmartRate.Rate(MainActivity.this
+//                        , "Rate Us"
+//                        , "Tell others what you think about this app"
+//                        , "Continue"
+//                        , "Please take a moment and rate us on Google Play"
+//                        , "click here"
+//                        , "Cancel"
+//                        , "Thanks for the feedback"
+//                        , Color.parseColor("#E44643")
+//                        , 4
+//                );
 //
 //                SmartRate.Rate(MainActivity.this
 //                        , "Rate Us"
