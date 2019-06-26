@@ -32,54 +32,55 @@ dependencies {
 ###### StepProgress Constructor:
 ```java
 
-    // For one time call
-    SmartRate.Rate(MainActivity.this
-    	, "Rate Us"
-    	, "Tell others what you think about this app"
-    	, "Continue"
-    	, "Please take a moment and rate us on Google Play"
-    	, "click here"
-    	, "Cancel"
-    	, "Thanks for the feedback"
-    	, Color.parseColor("#2196F3")
-   	, 4
-    );
+// For continual calls - 
+SmartRate.Rate(MainActivity.this
+        , "Rate Us"
+        , "Tell others what you think about this app"
+        , "Continue"
+        , "Please take a moment and rate us on Google Play"
+        , "click here"
+        , "Ask me later"
+        , "Never ask again"
+        , "Cancel"
+        , "Thanks for the feedback"
+        , Color.parseColor("#2196F3")
+        , 4
+        , 48
+        , 72
+);
 
-    // For continual calls - 
-    SmartRate.Rate(MainActivity.this
-    	, "Rate Us"
-    	, "Tell others what you think about this app"
-    	, "Continue"
-    	, "Please take a moment and rate us on Google Play"
-    	, "click here"
-    	, "Ask me later"
-    	, "Never ask again"
-    	, "Thanks for the feedback"
-    	, Color.parseColor("#2196F3")
-    	, 4
-    	, 48
-    	, 72
-    );
-    
-    // With Call Back:
-    SmartRate.Rate(MainActivity.this
-            , "Rate Us"
-            , "Tell others what you think about this app"
-            , "Continue"
-            , "Please take a moment and rate us on Google Play"
-            , "click here"
-            , "Cancel"
-            , "Thanks for the feedback"
-            , Color.parseColor("#2196F3")
-            , 4
-            , new SmartRate.CallBack_UserRating() {
-                @Override
-                    public void userRating(int rating) {
-                        // Do something
-                        // from now disable this option
-                    }
-              }
-    );
+// For one time call
+SmartRate.Rate(MainActivity.this
+        , "Rate Us"
+        , "Tell others what you think about this app"
+        , "Continue"
+        , "Please take a moment and rate us on Google Play"
+        , "click here"
+        , "Cancel"
+        , "Thanks for the feedback"
+        , Color.parseColor("#2196F3")
+        , 4
+);
+
+// With Call Back:
+SmartRate.Rate(MainActivity.this
+        , "Rate Us"
+        , "Tell others what you think about this app"
+        , "Continue"
+        , "Please take a moment and rate us on Google Play"
+        , "click here"
+        , "Cancel"
+        , "Thanks for the feedback"
+        , Color.parseColor("#2196F3")
+        , 4
+        , new SmartRate.CallBack_UserRating() {
+            @Override
+            public void userRating(int rating) {
+                // Do something
+                // maybe from now disable this button
+            }
+        }
+);
 
 ```
 
