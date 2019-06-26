@@ -7,8 +7,11 @@ A library for simple implementation of smart ranking.
 The user will see a dialog every x time.
 If the user gives a high score, he will be transferred to the Google store. If he gives a low score, he will only receive a thank you toast message.
 
-![device-2018-06-06-144912](https://github.com/guy-4444/SmartRateUsDialog-Android/blob/master/screen%20shot.png?raw=true)
-![device-2018-06-06-144912](https://github.com/guy-4444/SmartRateUsDialog-Android/blob/master/screen%20shot%202.png?raw=true)
+<img src="https://raw.githubusercontent.com/guy-4444/SmartRateUsDialog-Android/master/sc_1.png" width="288">
+<img src="https://raw.githubusercontent.com/guy-4444/SmartRateUsDialog-Android/master/sc_2.png" width="288">
+
+<img src="https://raw.githubusercontent.com/guy-4444/SmartRateUsDialog-Android/master/sc_5.png" width="512">
+<img src="https://raw.githubusercontent.com/guy-4444/SmartRateUsDialog-Android/master/sc_6.png" width="512">
 
 ## Setup
 Step 1. Add it in your root build.gradle at the end of repositories:
