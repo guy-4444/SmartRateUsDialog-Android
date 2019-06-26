@@ -24,7 +24,7 @@ Step 2. Add the dependency:
 
 ```
 dependencies {
-	        implementation 'com.github.guy-4444:SmartRateUsDialog-Android:1.00.07'
+	implementation 'com.github.guy-4444:SmartRateUsDialog-Android:1.00.08'
 }
 ```
 ## Usage
@@ -85,6 +85,11 @@ dependencies {
 
 ![device-2018-06-06-144912](https://github.com/guy-4444/SmartRateUsDialog-Android/blob/master/desc.png?raw=true)
 
+## What's new
+1.00.08:
+1. Landscape design improvements
+2. Cancel button
+3. google play click - new implementation
 
 ## License
 
@@ -102,4 +107,10 @@ dependencies {
     See the License for the specific language governing permissions and
     limitations under the License.
 
+## Credits
+
+5 stars icon:
+Icon made by Flat Icons (www.flat-icons.com) from www.flaticon.com
+Google play icon:
+Icon made by Flat Icons (www.flat-icons.com) from www.flaticon.com
 
