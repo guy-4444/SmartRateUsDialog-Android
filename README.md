@@ -85,6 +85,20 @@ SmartRate.Rate(MainActivity.this
         }
 );
 
+// Self implement without link to google play store:
+// -1 on stars
+SmartRate.Rate(MainActivity.this
+        , Color.parseColor("#E44643")
+        , -1
+        , new SmartRate.CallBack_UserRating() {
+            @Override
+            public void userRating(int rating) {
+                Toast.makeText(MainActivity.this, "Rating: " + rating + " Stars", Toast.LENGTH_LONG).show();
+                //saveUserRating(rating);
+            }
+        }
+);
+
 ```
 
 ![device-2018-06-06-144912](https://github.com/guy-4444/SmartRateUsDialog-Android/blob/master/desc.png?raw=true)
@@ -94,7 +108,9 @@ SmartRate.Rate(MainActivity.this
 1. Landscape design improvements
 2. Cancel button
 3. google play click - new implementation
-
+4. Fix bugs:
+    - first time does't appear
+    - 0 hour - now appear
 ## License
 
     Copyright 2019 Guy Isakov
