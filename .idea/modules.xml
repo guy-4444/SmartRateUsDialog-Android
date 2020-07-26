@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/SmartRateUsDialog-Android.iml" filepath="$PROJECT_DIR$/.idea/SmartRateUsDialog-Android.iml" group="SmartRateUsDialog-Android" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="SmartRateUsDialog-Android/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/smartrate/smartrate.iml" filepath="$PROJECT_DIR$/.idea/modules/smartrate/smartrate.iml" group="SmartRateUsDialog-Android/smartrate" />
+    </modules>
+  </component>
+</project>

@@ -7,10 +7,6 @@ A library for simple implementation of smart ranking.
 The user will see a dialog every x time.
 If the user gives a high score, he will be transferred to the Google store. If he gives a low score, he will only receive a thank you toast message.
 
-
-
-<img src="" width="288">
-
 <img src="https://raw.githubusercontent.com/guy-4444/SmartRateUsDialog-Android/master/sc_1.png" width="288">
 <img src="https://raw.githubusercontent.com/guy-4444/SmartRateUsDialog-Android/master/sc_2.png" width="288">
 
@@ -40,6 +36,10 @@ dependencies {
 ```java
 
 // For continual calls - 
+// first call after 3 days, the dialog will appear every 2 days until the user rates the app / or clicks on NEVER ASK AGAIN button
+// the number 4 represents the minimum stars to be shown
+// the 48 represents 48h and is going to be shown after 2 days
+// the 72 represents 72h delay and the dialog is going to be shown after 3 days more
 SmartRate.Rate(MainActivity.this
         , "Rate Us"
         , "Tell others what you think about this app"
@@ -57,6 +57,8 @@ SmartRate.Rate(MainActivity.this
 );
 
 // For one time call
+// it will appear after 3 days by default
+// the number 4 represents the minimum stars to be shown
 SmartRate.Rate(MainActivity.this
         , "Rate Us"
         , "Tell others what you think about this app"
@@ -70,6 +72,8 @@ SmartRate.Rate(MainActivity.this
 );
 
 // With Call Back:
+// it will appear after 3 days
+// the number 4 represents the minimum stars to be shown
 SmartRate.Rate(MainActivity.this
         , "Rate Us"
         , "Tell others what you think about this app"
@@ -108,13 +112,10 @@ SmartRate.Rate(MainActivity.this
 ![device-2018-06-06-144912](https://github.com/guy-4444/SmartRateUsDialog-Android/blob/master/desc.png?raw=true)
 
 ## What's new
-1.00.08:
-1. Landscape design improvements
-2. Cancel button
-3. google play click - new implementation
-4. Fix bugs:
-    - first time does't appear
-    - 0 hour - now appear
+1.1.0.0:
+1. Upgraded to AndroidX
+2. Added basic documentation
+
 ## License
 
     Copyright 2019 Guy Isakov
