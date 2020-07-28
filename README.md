@@ -3,6 +3,7 @@
 [![](https://jitpack.io/v/guy-4444/SmartRateUsDialog-Android.svg)](https://jitpack.io/#guy-4444/SmartRateUsDialog-Android)
 [![API](https://img.shields.io/badge/API-18%2B-green.svg?style=flat)]()
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Smart%20Rate%20Us%20Dialog-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/7577)
+![GitHub repo size](https://img.shields.io/github/repo-size/guy-4444/SmartRateUsDialog-Android)
 
 A library for simple implementation of smart ranking.
 The user will see a dialog every x time.
