@@ -8,12 +8,6 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.net.Uri;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.AppCompatButton;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.RelativeSizeSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +16,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+
+import com.google.android.material.button.MaterialButton;
 
 public class SmartRate {
 
@@ -230,7 +228,7 @@ public class SmartRate {
         alertDialog.setCanceledOnTouchOutside(false);
 
         final RelativeLayout alert_LAY_back = dialogView.findViewById(R.id.alert_LAY_back);
-        final AppCompatButton alert_BTN_ok = dialogView.findViewById(R.id.alert_BTN_ok);
+        final MaterialButton alert_BTN_ok = dialogView.findViewById(R.id.alert_BTN_ok);
         final Button alert_BTN_later = dialogView.findViewById(R.id.alert_BTN_later);
         final Button alert_BTN_stop = dialogView.findViewById(R.id.alert_BTN_stop);
         final TextView alert_LBL_title = dialogView.findViewById(R.id.alert_LBL_title);

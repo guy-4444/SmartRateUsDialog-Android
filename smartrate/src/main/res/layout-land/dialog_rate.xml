@@ -152,7 +152,7 @@
                     android:src="@drawable/ic_star_deactive" />
             </LinearLayout>
 
-            <android.support.v7.widget.AppCompatButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/alert_BTN_ok"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
